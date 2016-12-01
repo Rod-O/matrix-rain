@@ -1,12 +1,14 @@
+window.onload = function() {
+
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 
 //making the canvas full screen
-c.height = window.innerHeight;
-c.width = window.innerWidth;
+c.height = getDocHeight();
+c.width = getDocWidth();
 
 //chinese characters - taken from the unicode charset
-var chinese = "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑";
+var chinese = "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲ0123456789";
 //converting the string into an array of single characters
 chinese = chinese.split("");
 
@@ -27,7 +29,7 @@ function draw()
 	ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
 	ctx.fillRect(0, 0, c.width, c.height);
 	
-	ctx.fillStyle = "#0F0"; //green text
+	ctx.fillStyle = "#040"; //green text
 	ctx.font = font_size + "px arial";
 	//looping over drops
 	for(var i = 0; i < drops.length; i++)
@@ -45,4 +47,7 @@ function draw()
 		//incrementing Y coordinate
 		drops[i]++;
 	}
+}
+
+setInterval(draw, 50);
 }
